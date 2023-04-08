@@ -10,6 +10,7 @@ public class ScimServiceApplication
     public static void main(String[] args)
     {
         SpringApplication.run(ScimServiceApplication.class, args);
+        System.out.println("Hello, world!");
     }
 
 }
