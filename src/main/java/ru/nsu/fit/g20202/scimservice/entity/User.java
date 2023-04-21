@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.util.Set;
+
 @Entity
 @Data
 @Table(name= "user")
@@ -50,9 +52,33 @@ public class User
     private String locale;
 
     @Column(name = "preferred_language")
-    private String time_zone; // mb create another class to represent timezone?
+    private String timeZone; // mb create another class to represent timezone?
 
     @Column(name = "active")
     private Boolean active;
 
+    @OneToMany
+    private Set<Photo> photoSet;
+
+    @OneToMany
+    private Set<Ims> imsSet;
+
+    @OneToMany
+    private Set<PhoneNumber> phoneNumberSet;
+
+    @OneToMany
+    private Set<Email> emailSet;
+
+    @OneToMany
+    private Set<Entitlement> entitlementSet;
+
+    @ManyToMany
+    private Set<Role> roleSet;
+
+    @OneToMany
+    private Set<Certificate> certificateSet;
+
+    /*@ManyToMany
+    private Set<Group> groupSet;*/
+    
 }
