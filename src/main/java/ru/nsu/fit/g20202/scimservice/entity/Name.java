@@ -6,8 +6,8 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name= "meta")
-public class Meta
+@Table(name= "name")
+public class Name
 {
     @Id
     @GeneratedValue
@@ -17,4 +17,23 @@ public class Meta
     @NotNull
     @OneToOne
     private User user;
+
+    @Column(name = "formatted")
+    private String formatted;
+
+    @Column(name = "family_name")
+    private String familyName;
+
+    @Column(name = "given_name")
+    private String givenName;
+
+    @Column(name = "middle_name")
+    private String middleName;
+
+    @Column(name = "honorific_prefix")
+    private String honorificPrefix;
+
+    @Column(name = "honorific_suffix")
+    private String honorificSuffix;
+    
 }
