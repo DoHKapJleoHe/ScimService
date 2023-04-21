@@ -1,28 +1,58 @@
 package ru.nsu.fit.g20202.scimservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name= "user")
 public class User
 {
     @Id
     @GeneratedValue
-    private Long id;
-    private Long external_id;
-    private Long meta_id;
-    private String user_name;
-    private String name; // in photo type was JSON, so i don't know what to do
-    private String display_name;
+    private Integer id;
+
+    @Column(name = "external_id")
+    private String externalId;
+
+    @Column(name = "meta")
+    @OneToOne
+    private Meta meta;
+
+    @Column(name = "user_name")
+    @NotBlank
+    private String userName;
+
+    @Column(name = "name")
+    @OneToOne
+    private Name name;
+
+    @Column(name = "display_name")
+    private String displayName;
+
+    @Column(name = "nickname")
     private String nickname;
-    private String profile_url;
+
+    @Column(name = "profile_url")
+    private String profileUrl;
+
+    @Column(name = "title")
     private String title;
-    private String user_type;
-    private String preferred_language;
+
+    @Column(name = "user_type")
+    private String userType;
+
+    @Column(name = "preferred_language")
+    private String preferredLanguage;
+
+    @Column(name = "preferred_language")
     private String locale;
+
+    @Column(name = "preferred_language")
     private String time_zone; // mb create another class to represent timezone?
-    private boolean active;
+
+    @Column(name = "active")
+    private Boolean active;
+
 }
