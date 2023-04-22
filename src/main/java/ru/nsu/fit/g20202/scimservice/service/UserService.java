@@ -17,12 +17,11 @@ public class UserService
 
     public User createUser(UserDTO userDTO)
     {
+        // TODO: Add name and meta
         User user = User.builder()
                 .id(userDTO.getId())
                 .externalId(userDTO.getExternalId())
-                .meta(userDTO.getMetaId()) // ???
                 .userName(userDTO.getUserName())
-                .name(userDTO.getName())
                 .displayName(userDTO.getDisplayName())
                 .build();
 
