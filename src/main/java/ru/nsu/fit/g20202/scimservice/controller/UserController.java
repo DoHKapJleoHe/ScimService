@@ -25,13 +25,13 @@ public class UserController
     }
 
     @GetMapping
-    List<User> getAll() {
+    public List<User> getAll() {
         return userRepository.findAll();
     }
 
     // TODO: Should return UserDTO
     @PostMapping
-    User addUser(@RequestBody User newUser) {
+    public User addUser(@RequestBody User newUser) {
         userRepository.save(newUser);
 
         // TODO: separate incoming user from user that will actually be saved to the repo
@@ -41,7 +41,7 @@ public class UserController
 
     // TODO: Should return UserDTO
     @GetMapping("/{id}")
-    User getUserById(@PathVariable Integer id) {
+    public User getUserById(@PathVariable Integer id) {
         // TODO: Should notify that no user was found
         return userRepository.findById(id).orElse(new User());
     }
@@ -49,7 +49,7 @@ public class UserController
 
     // TODO: Should return UserDTO
     @PutMapping("/{id}")
-    User replaceUserById(@RequestBody User newUser, @PathVariable Integer id) {
+    public User replaceUserById(@RequestBody User newUser, @PathVariable Integer id) {
         return userRepository.findById(id)
                 .map(user -> {
                     user.setName(newUser.getName());
@@ -62,7 +62,7 @@ public class UserController
     }
 
     @DeleteMapping("/{id}")
-    void deleteUser(@PathVariable Integer id) {
+    public void deleteUser(@PathVariable Integer id) {
         userRepository.deleteById(id);
     }
 }
