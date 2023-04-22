@@ -1,6 +1,5 @@
 package ru.nsu.fit.g20202.scimservice.entity;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
