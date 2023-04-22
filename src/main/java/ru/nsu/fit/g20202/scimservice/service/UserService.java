@@ -19,11 +19,11 @@ public class UserService
     {
         User user = User.builder()
                 .id(userDTO.getId())
-                .externalId(userDTO.getExternal_id())
-                .meta(userDTO.getMeta_id()) // ???
-                .userName(userDTO.getUser_name())
-                .name(userDTO.getUser_name())
-                .displayName(userDTO.getDisplay_name())
+                .externalId(userDTO.getExternalId())
+                .meta(userDTO.getMetaId()) // ???
+                .userName(userDTO.getUserName())
+                .name(userDTO.getName())
+                .displayName(userDTO.getDisplayName())
                 .build();
 
         return userRepository.save(user);

@@ -11,7 +11,6 @@ import java.util.Date;
 @Table(name= "meta")
 public class Meta
 {
-
     @Id
     @GeneratedValue
     private Integer id;

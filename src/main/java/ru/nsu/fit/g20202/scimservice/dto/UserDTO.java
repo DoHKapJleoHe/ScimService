@@ -8,7 +8,7 @@ public class UserDTO
 {
     private Integer id;
     private String externalId;
-    private Long metaId;
+    private MetaDTO meta;
     private String userName;
     private NameDTO name; // TODO: use DTO to JSON conversion
     private String displayName;
