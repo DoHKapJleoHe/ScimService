@@ -15,7 +15,7 @@ public class Certificate
 
     @Column(name = "user")
     @NotNull
-    @OneToOne
+    @ManyToOne(optional = false)
     private User user;
 
     @Column(name = "certificate_name")

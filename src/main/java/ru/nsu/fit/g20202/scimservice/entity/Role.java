@@ -3,16 +3,21 @@ package ru.nsu.fit.g20202.scimservice.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
+@Table(name = "role")
 public class Role
 {
     @Id
     @GeneratedValue
-    private Long role_id;
+    private Integer id;
+
+    @Column(name = "role")
     private String role;
-    private List<User> user_id = new ArrayList<>();
+
+    @Column(name = "user")
+    @ManyToMany
+    private Set<User> userSet;
 }

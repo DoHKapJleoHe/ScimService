@@ -1,17 +1,21 @@
 package ru.nsu.fit.g20202.scimservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "phone_number")
 public class PhoneNumber
 {
     @Id
     @GeneratedValue
-    private Long phone_id;
-    private Long phone_number;
-    private Long user_id;
+    private Integer id;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "user")
+    @ManyToOne(optional = false)
+    private User user;
 }

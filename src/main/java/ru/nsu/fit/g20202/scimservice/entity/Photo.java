@@ -1,8 +1,6 @@
 package ru.nsu.fit.g20202.scimservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -11,7 +9,12 @@ public class Photo
 {
     @Id
     @GeneratedValue
-    private Long photo_id;
-    private String photo_url;
-    private Long user_id;
+    private Integer id;
+
+    @Column(name = "photo_url")
+    private String photoUrl;
+
+    @Column(name = "user")
+    @ManyToOne(optional = false)
+    private User user;
 }

@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name= "meta")
-public class Meta 
+public class Meta
 {
 
     @Id
@@ -37,5 +37,5 @@ public class Meta
 
     @Column(name = "version")
     private String version;
-    
+
 }
