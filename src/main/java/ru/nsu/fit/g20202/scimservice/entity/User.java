@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -58,27 +59,23 @@ public class User
     private Boolean active;
 
     @OneToMany
-    private Set<Photo> photoSet;
+    private List<Photo> photoSet;
 
     @OneToMany
-    private Set<Ims> imsSet;
+    private List<Ims> imsSet;
 
     @OneToMany
-    private Set<PhoneNumber> phoneNumberSet;
+    private List<PhoneNumber> phoneNumberSet;
 
     @OneToMany
-    private Set<Email> emailSet;
+    private List<Email> emailSet;
 
     @OneToMany
-    private Set<Entitlement> entitlementSet;
+    private List<Entitlement> entitlementSet;
 
     @ManyToMany
-    private Set<Role> roleSet;
+    private List<Role> roleSet;
 
     @OneToMany
-    private Set<Certificate> certificateSet;
-
-    /*@ManyToMany
-    private Set<Group> groupSet;*/
-    
+    private List<Certificate> certificateSet;
 }

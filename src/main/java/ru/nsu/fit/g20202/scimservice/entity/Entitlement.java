@@ -13,5 +13,5 @@ public class Entitlement
     @GeneratedValue
     private Long entitlement_id;
     private String entitlement;
-    private Long user_id; //?
+    private Long user;
 }
