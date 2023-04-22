@@ -78,6 +78,6 @@ public class User
     @OneToMany
     private Set<Certificate> certificateSet;
     
-    /*@ManyToMany
--    private List<Group> groupList;*/
+     @ManyToMany
+     private Set<Group> groupSet;
 }
