@@ -7,7 +7,7 @@ import ru.nsu.fit.g20202.scimservice.entity.User;
 public class UserDTO
 {
     private Integer id;
-    private Long external_id;
+    private String external_id;
     private Long meta_id;
     private String user_name;
     private NameDTO name; // TODO: use DTO to JSON conversion
