@@ -29,7 +29,6 @@ public class UserController
         return userRepository.findAll();
     }
 
-    // TODO: Should return UserDTO
     @PostMapping
     public User addUser(@RequestBody User newUser) {
         userRepository.save(newUser);
@@ -39,7 +38,6 @@ public class UserController
         return newUser;
     }
 
-    // TODO: Should return UserDTO
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Integer id) {
         // TODO: Should notify that no user was found
@@ -47,7 +45,6 @@ public class UserController
     }
 
 
-    // TODO: Should return UserDTO
     @PutMapping("/{id}")
     public User replaceUserById(@RequestBody User newUser, @PathVariable Integer id) {
         return userRepository.findById(id)
