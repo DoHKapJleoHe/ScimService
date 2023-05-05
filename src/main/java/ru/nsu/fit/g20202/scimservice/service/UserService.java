@@ -5,8 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.nsu.fit.g20202.scimservice.dto.UserDTO;
 import ru.nsu.fit.g20202.scimservice.entity.User;
+import ru.nsu.fit.g20202.scimservice.mappers.UserMapper;
 import ru.nsu.fit.g20202.scimservice.repository.UserRepository;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -15,21 +18,34 @@ public class UserService
 {
     private final UserRepository userRepository;
 
-    public User createUser(UserDTO userDTO)
+    public void createUser(UserDTO userDTO)
     {
         // TODO: Add name and meta
         User user = User.builder()
-                .id(userDTO.getId())
                 .externalId(userDTO.getExternalId())
-                .userName(userDTO.getUserName())
-                .displayName(userDTO.getDisplayName())
+                //.meta()
                 .build();
 
-        return userRepository.save(user);
+        userRepository.save(user);
     }
 
-    public Set<User> getAllUsers()
+    public List<User> getAllUsers()
     {
-        return (Set<User>) userRepository.findAll();
+        return userRepository.findAll();
+    }
+
+    public Optional<User> getUserById(int id)
+    {
+        return userRepository.findById(id);
+    }
+
+    public void deleteUser(int id)
+    {
+        userRepository.deleteById(id);
+    }
+
+    public void replaceUserById(UserDTO newUser, int id)
+    {
+
     }
 }

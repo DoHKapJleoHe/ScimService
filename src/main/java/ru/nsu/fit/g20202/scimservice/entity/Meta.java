@@ -2,12 +2,18 @@ package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name= "meta")
 public class Meta
 {
@@ -36,5 +42,4 @@ public class Meta
 
     @Column(name = "version")
     private String version;
-
 }

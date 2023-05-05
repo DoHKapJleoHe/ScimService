@@ -13,13 +13,4 @@ public class UserDTO
     private NameDTO name; // TODO: use DTO to JSON conversion
     private String displayName;
 
-    public UserDTO(User user)
-    {
-        this.id = user.getId();
-        this.externalId = user.getExternalId();
-        this.meta = new MetaDTO(user.getMeta());
-        this.userName = user.getUserName();
-        this.name = new NameDTO(user.getName());
-        this.displayName = user.getDisplayName();
-    }
 }
