@@ -12,9 +12,6 @@ import ru.nsu.fit.g20202.scimservice.service.UserService;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * TODO: Parse incoming JSON and create new entity, since the incoming JSON doesn't represent the full entity.
- */
 @RestController
 @RequestMapping("/User")
 public class UserController
@@ -31,25 +28,27 @@ public class UserController
     }
 
     @PostMapping
-    public void addUser(@RequestBody UserDTO newUser) {
-        // TODO: separate incoming user from user that will actually be saved to the repo
+    public void addUser(@RequestBody UserDTO newUserDTO) {
+        User newUser = UserMapper.toEntity(newUserDTO);
+
         userService.createUser(newUser);
     }
 
     @GetMapping("/{id}")
     public UserDTO getUserById(@PathVariable Integer id)
     {
-        // TODO: Should notify that no user was found
         Optional<User> user = userService.getUserById(id);
 
-        // TODO: Make check before user.get()
-        return UserMapper.toDTO(user.get());
+        // TODO: Should notify that no user was found
+        return user.map(UserMapper::toDTO).orElse(null);
     }
 
 
     @PutMapping("/{id}")
-    public void replaceUserById(@RequestBody UserDTO newUser, @PathVariable Integer id)
+    public void replaceUserById(@RequestBody UserDTO newUserDTO, @PathVariable Integer id)
     {
+        User newUser = UserMapper.toEntity(newUserDTO);
+
         userService.replaceUserById(newUser, id);
     }
 
