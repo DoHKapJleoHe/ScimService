@@ -3,7 +3,7 @@ package ru.nsu.fit.g20202.scimservice.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,5 +19,5 @@ public class Role
 
     @Column(name = "user")
     @ManyToMany
-    private Set<User> userSet;
+    private List<User> users;
 }

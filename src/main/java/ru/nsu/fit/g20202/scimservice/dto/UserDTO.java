@@ -10,7 +10,6 @@ public class UserDTO
     private String externalId;
     private MetaDTO meta;
     private String userName;
-    private NameDTO name; // TODO: use DTO to JSON conversion
+    private NameDTO name;
     private String displayName;
-
 }

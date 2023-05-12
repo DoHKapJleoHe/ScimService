@@ -84,6 +84,9 @@ public class User
     @OneToMany
     private Set<Certificate> certificateSet;
     
-     @ManyToMany
-     private Set<Group> groupSet;
+    @ManyToMany
+    private Set<Group> groupSet;
+
+    @ManyToOne
+    private Address address;
 }
