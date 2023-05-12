@@ -18,15 +18,8 @@ public class UserService
 {
     private final UserRepository userRepository;
 
-    public void createUser(UserDTO userDTO)
+    public void createUser(User user)
     {
-        // TODO: Add name and meta
-        // TODO: extract dto conversion to mapper
-        User user = User.builder()
-                .externalId(userDTO.getExternalId())
-                //.meta()
-                .build();
-
         userRepository.save(user);
     }
 
@@ -45,7 +38,7 @@ public class UserService
         userRepository.deleteById(id);
     }
 
-    public void replaceUserById(UserDTO newUser, int id)
+    public void replaceUserById(User newUser, int id)
     {
 
     }
