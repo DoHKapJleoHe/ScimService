@@ -21,6 +21,7 @@ public class UserService
     public void createUser(UserDTO userDTO)
     {
         // TODO: Add name and meta
+        // TODO: extract dto conversion to mapper
         User user = User.builder()
                 .externalId(userDTO.getExternalId())
                 //.meta()
