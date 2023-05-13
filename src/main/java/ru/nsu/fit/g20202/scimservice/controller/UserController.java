@@ -2,19 +2,16 @@ package ru.nsu.fit.g20202.scimservice.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.nsu.fit.g20202.scimservice.dto.UserDTO;
 import ru.nsu.fit.g20202.scimservice.entity.User;
 import ru.nsu.fit.g20202.scimservice.mappers.UserMapper;
-import ru.nsu.fit.g20202.scimservice.repository.UserRepository;
 import ru.nsu.fit.g20202.scimservice.service.UserService;
 
 import java.util.List;
-import java.util.Optional;
 
-/**
- * TODO: Parse incoming JSON and create new entity, since the incoming JSON doesn't represent the full entity.
- */
 @RestController
 @RequestMapping("/User")
 public class UserController
@@ -23,38 +20,50 @@ public class UserController
     private UserService userService;
 
     @GetMapping
-    public List<UserDTO> getAllUsers()
+    public ResponseEntity<List<UserDTO>> getAllUsers()
     {
-        var users =  userService.getAllUsers();
+        List<User> users =  userService.getAllUsers();
 
-        return users.stream().map(UserMapper::toDTO).toList();
+        return new ResponseEntity<>(users.stream().map(UserMapper::toDTO).toList(), HttpStatus.OK);
     }
 
     @PostMapping
-    public void addUser(@RequestBody UserDTO newUser) {
-        // TODO: separate incoming user from user that will actually be saved to the repo
-        userService.createUser(newUser);
-    }
+    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO newUserDTO)
+    {
+        User newUser = UserMapper.toEntity(newUserDTO);
+
+        User responseUser = userService.createUser(newUser);
+
+        UserDTO responseUserDTO = UserMapper.toDTO(responseUser);
+
+        return new ResponseEntity<>(responseUserDTO, HttpStatus.CREATED);
+}
 
     @GetMapping("/{id}")
-    public UserDTO getUserById(@PathVariable Integer id)
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Integer id)
     {
-        // TODO: Should notify that no user was found
-        Optional<User> user = userService.getUserById(id);
+        User user = userService.getUserById(id);
 
-        // TODO: Make check before user.get()
-        return UserMapper.toDTO(user.get());
+        return new ResponseEntity<>(UserMapper.toDTO(user), HttpStatus.OK);
     }
 
 
     @PutMapping("/{id}")
-    public void replaceUserById(@RequestBody UserDTO newUser, @PathVariable Integer id)
+    public ResponseEntity<UserDTO> replaceUserById(@RequestBody UserDTO newUserDTO, @PathVariable Integer id)
     {
-        userService.replaceUserById(newUser, id);
+        User newUser = UserMapper.toEntity(newUserDTO);
+
+        User responseUser = userService.replaceUserById(newUser, id);
+
+        UserDTO responseUserDTO = UserMapper.toDTO(responseUser);
+
+        return new ResponseEntity<>(responseUserDTO, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Integer id) {
+    public ResponseEntity<Object> deleteUser(@PathVariable Integer id) {
         userService.deleteUser(id);
+
+        return ResponseEntity.noContent().build();
     }
 }
