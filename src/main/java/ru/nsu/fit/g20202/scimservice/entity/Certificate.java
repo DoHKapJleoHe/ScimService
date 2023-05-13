@@ -13,12 +13,11 @@ public class Certificate
     @GeneratedValue
     private Integer id;
 
+    @Column(name = "certificate_name")
+    private String certificateName;
+
     @Column(name = "user")
     @NotNull
     @ManyToOne(optional = false)
     private User user;
-
-    @Column(name = "certificate_name")
-    private String certificateName;
-
 }
