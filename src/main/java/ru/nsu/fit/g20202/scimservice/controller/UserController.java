@@ -13,7 +13,7 @@ import ru.nsu.fit.g20202.scimservice.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/User")
+@RequestMapping("/Users")
 public class UserController
 {
     @Autowired
@@ -37,7 +37,7 @@ public class UserController
         UserDTO responseUserDTO = UserMapper.toDTO(responseUser);
 
         return new ResponseEntity<>(responseUserDTO, HttpStatus.CREATED);
-}
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Integer id)
