@@ -13,7 +13,7 @@ import ru.nsu.fit.g20202.scimservice.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/User")
+@RequestMapping("/Users")
 public class UserController
 {
     @Autowired
