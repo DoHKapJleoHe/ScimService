@@ -37,7 +37,7 @@ public class UserController
         UserDTO responseUserDTO = UserMapper.toDTO(responseUser);
 
         return new ResponseEntity<>(responseUserDTO, HttpStatus.CREATED);
-}
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Integer id)
