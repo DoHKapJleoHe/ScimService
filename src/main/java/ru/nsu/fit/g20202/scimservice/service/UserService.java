@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.nsu.fit.g20202.scimservice.entity.User;
 import ru.nsu.fit.g20202.scimservice.exceptions.ImmutableAttributeException;
+import ru.nsu.fit.g20202.scimservice.exceptions.ResourceNotFoundException;
 import ru.nsu.fit.g20202.scimservice.exceptions.UniqueAttributeException;
-import ru.nsu.fit.g20202.scimservice.exceptions.UserNotFoundException;
 import ru.nsu.fit.g20202.scimservice.repository.UserRepository;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class UserService
     {
         if(!userRepository.existsById(id))
         {
-            throw new UserNotFoundException(id);
+            throw new ResourceNotFoundException(id);
         }
         return userRepository.findById(id).get();
     }
@@ -43,7 +43,7 @@ public class UserService
     {
         if(!userRepository.existsById(id))
         {
-            throw new UserNotFoundException(id);
+            throw new ResourceNotFoundException(id);
         }
         userRepository.deleteById(id);
     }
@@ -52,7 +52,7 @@ public class UserService
     {
         if(!userRepository.existsById(id))
         {
-            throw new UserNotFoundException(id);
+            throw new ResourceNotFoundException(id);
         }
         if(id != newUser.getId())
         {
