@@ -15,6 +15,10 @@
     <description>SCIM-Service</description>
     <properties>
         <java.version>17</java.version>
+        <sonar.projectKey>nsuproject1_scim-service</sonar.projectKey>
+        <sonar.login>08c85ce93a547eab976c67a930f1af0f080469b8</sonar.login>
+        <sonar.organization>nsuproject1</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io/</sonar.host.url>
     </properties>
     <dependencies>
         <dependency>
@@ -88,7 +92,12 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.7.0.1746</version>
+            </plugin>
         </plugins>
     </build>
-
 </project>
