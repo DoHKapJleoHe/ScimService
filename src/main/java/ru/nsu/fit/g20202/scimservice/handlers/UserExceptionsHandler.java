@@ -9,23 +9,27 @@ import ru.nsu.fit.g20202.scimservice.exceptions.UniqueAttributeException;
 import ru.nsu.fit.g20202.scimservice.exceptions.UserNotFoundException;
 
 @RestControllerAdvice
-public class UserExceptionsHandler {
+public class UserExceptionsHandler
+{
 
     @ExceptionHandler(value = {UserNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String UserNotFoundExceptionHandler(UserNotFoundException exception) {
+    public String UserNotFoundExceptionHandler(UserNotFoundException exception)
+    {
         return exception.getMessage();
     }
 
     @ExceptionHandler(value = {ImmutableAttributeException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String ImmutableAttributeExceptionHandler(ImmutableAttributeException exception) {
+    public String ImmutableAttributeExceptionHandler(ImmutableAttributeException exception)
+    {
         return exception.getMessage();
     }
 
     @ExceptionHandler(value = {UniqueAttributeException.class})
     @ResponseStatus(HttpStatus.CONFLICT)
-    public String UniqueAttributeExceptionHandler(UniqueAttributeException exception) {
+    public String UniqueAttributeExceptionHandler(UniqueAttributeException exception)
+    {
         return exception.getMessage();
     }
 
