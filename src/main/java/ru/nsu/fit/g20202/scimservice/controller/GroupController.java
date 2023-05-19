@@ -5,11 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.nsu.fit.g20202.scimservice.dto.GroupDTO;
-import ru.nsu.fit.g20202.scimservice.dto.UserDTO;
 import ru.nsu.fit.g20202.scimservice.entity.Group;
-import ru.nsu.fit.g20202.scimservice.entity.User;
 import ru.nsu.fit.g20202.scimservice.mappers.GroupMapper;
-import ru.nsu.fit.g20202.scimservice.mappers.UserMapper;
 import ru.nsu.fit.g20202.scimservice.service.GroupService;
 
 import java.util.List;
