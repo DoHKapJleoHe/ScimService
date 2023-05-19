@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.nsu.fit.g20202.scimservice.entity.Group;
 import ru.nsu.fit.g20202.scimservice.entity.User;
+import ru.nsu.fit.g20202.scimservice.exceptions.ImmutableAttributeException;
 import ru.nsu.fit.g20202.scimservice.exceptions.ResourceNotFoundException;
 import ru.nsu.fit.g20202.scimservice.exceptions.UniqueAttributeException;
-import ru.nsu.fit.g20202.scimservice.repository.UserRepository;
 
 import java.util.List;
 
@@ -15,7 +15,6 @@ import java.util.List;
 public class GroupService
 {
     private final GroupRepository groupRepository;
-    private final UserRepository userRepository;
 
     public Group createGroup(Group group)
     {
@@ -47,6 +46,20 @@ public class GroupService
             throw new ResourceNotFoundException(id);
         }
         groupRepository.deleteById(id);
+    }
+
+    public Group replaceGroupById(Group newGroup, int id)
+    {
+        if(!groupRepository.existsById(id))
+        {
+            throw new ResourceNotFoundException(id);
+        }
+        if(id != newGroup.getId())
+        {
+            throw new ImmutableAttributeException("id");
+        }
+        groupRepository.save(newGroup);
+        return newGroup;
     }
 
 }
