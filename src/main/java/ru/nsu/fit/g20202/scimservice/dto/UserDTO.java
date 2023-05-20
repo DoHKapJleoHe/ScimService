@@ -9,6 +9,7 @@ public class UserDTO
     private Integer id;
     private String externalId;
     private MetaDTO meta;
+    private boolean active;
     private String userName;
     private NameDTO name;
     private String displayName;
