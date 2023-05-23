@@ -3,6 +3,8 @@ package ru.nsu.fit.g20202.scimservice.mappers;
 import ru.nsu.fit.g20202.scimservice.dto.MetaDTO;
 import ru.nsu.fit.g20202.scimservice.entity.Meta;
 
+import java.text.ParseException;
+
 public class MetaMapper
 {
     public static MetaDTO toDTO(Meta meta)
@@ -17,11 +19,21 @@ public class MetaMapper
         return metaDTO;
     }
 
-    // TODO: finish this
-    public static Meta toEntity(MetaDTO metaDTO)
+    /**
+     * This mapper creates new Meta without User.
+     * User should be added separately.
+     *
+     * @param dto
+     * @return Meta
+     */
+    public static Meta toEntity(MetaDTO dto) throws ParseException
     {
         Meta meta = Meta.builder()
-                .id(metaDTO.getId())
+                .version(dto.getVersion())
+                .resourceType(dto.getResourceType())
+                .created(TimeConverter.stringToDate(dto.getCreated()))
+                .lastModified(TimeConverter.stringToDate(dto.getLastModified()))
+                .location(dto.getLocation())
                 .build();
 
         return meta;

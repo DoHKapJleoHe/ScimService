@@ -6,6 +6,8 @@ import ru.nsu.fit.g20202.scimservice.entity.Meta;
 import ru.nsu.fit.g20202.scimservice.entity.Name;
 import ru.nsu.fit.g20202.scimservice.entity.User;
 
+import java.text.ParseException;
+
 @Component
 public class UserMapper
 {
@@ -23,7 +25,7 @@ public class UserMapper
         return userDTO;
     }
 
-    public static User toEntity(UserDTO dto)
+    public static User toEntity(UserDTO dto) throws ParseException
     {
         User newUser = User.builder()
                 .userName(dto.getUserName())
@@ -32,24 +34,13 @@ public class UserMapper
                 .displayName(dto.getDisplayName())
                 .build();
 
-        Meta newMeta = Meta.builder()
-                .version(dto.getMeta().getVersion())
-                .resourceType(dto.getMeta().getResourceType())
-                .location(dto.getMeta().getLocation())
-                .user(newUser)
-                .build();
+        Meta newMeta = MetaMapper.toEntity(dto.getMeta());
+        newMeta.setUser(newUser);
 
         newUser.setMeta(newMeta);
 
-        Name newName = Name.builder()
-                .familyName(dto.getName().getFamilyName())
-                .givenName(dto.getName().getGivenName())
-                .middleName(dto.getName().getMiddleName())
-                .formatted(dto.getName().getFormatted())
-                .honorificPrefix(dto.getName().getHonorificPrefix())
-                .honorificSuffix(dto.getName().getHonorificSuffix())
-                .user(newUser)
-                .build();
+        Name newName = NameMapper.toEntity(dto.getName());
+        newName.setUser(newUser);
 
         newUser.setName(newName);
 

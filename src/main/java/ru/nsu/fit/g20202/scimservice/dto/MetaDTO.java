@@ -10,6 +10,8 @@ public class MetaDTO
 {
     private Integer id;
     private String resourceType;
+    private String created;
+    private String lastModified;
     private String location;
     private String version;
 }
