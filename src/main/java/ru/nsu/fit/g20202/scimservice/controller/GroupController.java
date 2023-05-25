@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.nsu.fit.g20202.scimservice.dto.GroupDTO;
 import ru.nsu.fit.g20202.scimservice.entity.Group;
-import ru.nsu.fit.g20202.scimservice.mappers.GroupMapper;
+//import ru.nsu.fit.g20202.scimservice.mappers.GroupMapper;
 import ru.nsu.fit.g20202.scimservice.service.GroupService;
 
 import java.util.List;
@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/Groups")
 public class GroupController {
+    /*
     @Autowired
     private GroupService groupService;
 
@@ -64,5 +65,5 @@ public class GroupController {
 
         return ResponseEntity.noContent().build();
 
-    }
+    }*/
 }

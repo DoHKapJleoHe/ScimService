@@ -30,12 +30,10 @@ public class Meta
     private String resourceType;
 
     @Column(name = "created")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    private String created;
 
     @Column(name = "last_modified")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModified;
+    private String lastModified;
 
     @Column(name = "location")
     private String location;

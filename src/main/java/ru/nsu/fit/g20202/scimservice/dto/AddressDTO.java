@@ -14,6 +14,6 @@ public class AddressDTO
     private String postalCode;
     private String country;
     private String type;
-    private boolean primary;
+    private boolean isPrimary;
     private List<UserDTO> users;
 }

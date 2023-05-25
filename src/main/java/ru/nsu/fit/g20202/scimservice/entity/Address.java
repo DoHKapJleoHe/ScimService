@@ -13,6 +13,7 @@ public class Address
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String formatted;
     private String streetAddress;
     private String locality;
@@ -20,7 +21,7 @@ public class Address
     private String postalCode;
     private String country;
     private String type;
-    private boolean primary;
+    private boolean isPrimary;
 
     @OneToMany
     private List<User> users;

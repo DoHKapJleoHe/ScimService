@@ -26,13 +26,11 @@ public class MetaMapper
      * @param dto
      * @return Meta
      */
-    public static Meta toEntity(MetaDTO dto) throws ParseException
+    public static Meta toEntity(MetaDTO dto)
     {
-        Meta meta = Meta.builder()
+        var meta = Meta.builder()
                 .version(dto.getVersion())
                 .resourceType(dto.getResourceType())
-                .created(TimeConverter.stringToDate(dto.getCreated()))
-                .lastModified(TimeConverter.stringToDate(dto.getLastModified()))
                 .location(dto.getLocation())
                 .build();
 

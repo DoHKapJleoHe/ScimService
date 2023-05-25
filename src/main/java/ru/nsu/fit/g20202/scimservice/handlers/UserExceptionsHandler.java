@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.nsu.fit.g20202.scimservice.exceptions.ImmutableAttributeException;
 import ru.nsu.fit.g20202.scimservice.exceptions.UniqueAttributeException;
-import ru.nsu.fit.g20202.scimservice.exceptions.UserNotFoundException;
+import ru.nsu.fit.g20202.scimservice.exceptions.ResourceNotFoundException;
 
 @RestControllerAdvice
 public class UserExceptionsHandler
 {
 
-    @ExceptionHandler(value = {UserNotFoundException.class})
+    @ExceptionHandler(value = {ResourceNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String UserNotFoundExceptionHandler(UserNotFoundException exception)
+    public String UserNotFoundExceptionHandler(ResourceNotFoundException exception)
     {
         return exception.getMessage();
     }

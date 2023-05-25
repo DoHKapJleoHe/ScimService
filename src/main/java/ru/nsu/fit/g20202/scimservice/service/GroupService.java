@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class GroupService
-{
+{/*
     private final GroupRepository groupRepository;
 
     public Group createGroup(Group group)
@@ -61,5 +61,5 @@ public class GroupService
         groupRepository.save(newGroup);
         return newGroup;
     }
-
+*/
 }

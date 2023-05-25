@@ -25,7 +25,7 @@ public class UserMapper
         return userDTO;
     }
 
-    public static User toEntity(UserDTO dto) throws ParseException
+    public static User toEntity(UserDTO dto)
     {
         User newUser = User.builder()
                 .userName(dto.getUserName())
@@ -34,15 +34,17 @@ public class UserMapper
                 .displayName(dto.getDisplayName())
                 .build();
 
-        Meta newMeta = MetaMapper.toEntity(dto.getMeta());
-        newMeta.setUser(newUser);
+        if (dto.getMeta() != null) {
+            Meta newMeta = MetaMapper.toEntity(dto.getMeta());
+            newMeta.setUser(newUser);
+            newUser.setMeta(newMeta);
+        }
 
-        newUser.setMeta(newMeta);
-
-        Name newName = NameMapper.toEntity(dto.getName());
-        newName.setUser(newUser);
-
-        newUser.setName(newName);
+        if (dto.getName() != null) {
+            Name newName = NameMapper.toEntity(dto.getName());
+            newName.setUser(newUser);
+            newUser.setName(newName);
+        }
 
         return newUser;
     }
