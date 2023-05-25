@@ -15,7 +15,7 @@ public class Email
     @Column(name = "email")
     private String email;
 
-    @Column(name = "user")
+    @JoinColumn(name = "user")
     @ManyToOne(optional = false)
     private User user;
 }

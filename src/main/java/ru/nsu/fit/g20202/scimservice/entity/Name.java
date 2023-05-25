@@ -19,7 +19,7 @@ public class Name
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "user")
+    @PrimaryKeyJoinColumn(name = "user")
     @NotNull
     @OneToOne
     private User user;

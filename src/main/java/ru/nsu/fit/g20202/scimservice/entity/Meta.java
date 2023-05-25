@@ -21,7 +21,7 @@ public class Meta
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "user")
+    @PrimaryKeyJoinColumn(name = "user")
     @NotNull
     @OneToOne
     private User user;

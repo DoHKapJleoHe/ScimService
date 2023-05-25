@@ -17,7 +17,7 @@ public class Role
     @Column(name = "role")
     private String role;
 
-    @Column(name = "user")
+    @JoinColumn(name = "user")
     @ManyToMany
     private List<User> users;
 }

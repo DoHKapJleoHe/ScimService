@@ -18,7 +18,7 @@ public class Group {
     @Column(name = "external_id")
     private String externalId;
 
-    @Column(name = "meta")
+    @PrimaryKeyJoinColumn(name = "meta")
     @OneToOne
     private Meta meta;
 

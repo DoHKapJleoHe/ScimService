@@ -15,7 +15,7 @@ public class PhoneNumber
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "user")
+    @JoinColumn(name = "user")
     @ManyToOne(optional = false)
     private User user;
 }

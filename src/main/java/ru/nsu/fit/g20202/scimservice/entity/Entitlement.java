@@ -13,7 +13,7 @@ public class Entitlement
     private Long id;
     private String entitlement;
 
-    @Column(name = "user")
+    @JoinColumn(name = "user")
     @NotNull
     @ManyToOne(optional = false)
     private User user;

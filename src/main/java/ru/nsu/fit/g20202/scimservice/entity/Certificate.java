@@ -16,7 +16,7 @@ public class Certificate
     @Column(name = "certificate_name")
     private String certificateName;
 
-    @Column(name = "user")
+    @JoinColumn(name = "user")
     @NotNull
     @ManyToOne(optional = false)
     private User user;

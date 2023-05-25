@@ -15,7 +15,7 @@ public class Ims
     @Column(name = "ims")
     private String ims; // let it be string because i don't know what ims is))
 
-    @Column(name = "user")
+    @JoinColumn(name = "user")
     @ManyToOne(optional = false)
     private User user;
 }

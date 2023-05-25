@@ -24,15 +24,15 @@ public class User
     @Column(name = "external_id")
     private String externalId;
 
-    @Column(name = "meta")
+    @PrimaryKeyJoinColumn(name = "meta")
     @OneToOne
     private Meta meta;
 
-    @Column(name = "user_name")
+    @PrimaryKeyJoinColumn(name = "user_name")
     @NotBlank
     private String userName;
 
-    @Column(name = "name")
+    @PrimaryKeyJoinColumn(name = "name")
     @OneToOne
     private Name name;
 
@@ -54,10 +54,10 @@ public class User
     @Column(name = "preferred_language")
     private String preferredLanguage;
 
-    @Column(name = "preferred_language")
+    @Column(name = "locale")
     private String locale;
 
-    @Column(name = "preferred_language")
+    @Column(name = "time_zone")
     private String timeZone; // mb create another class to represent timezone?
 
     @Column(name = "active")

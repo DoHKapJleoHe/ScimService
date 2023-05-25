@@ -14,7 +14,7 @@ public class Photo
     @Column(name = "photo_url")
     private String photoUrl;
 
-    @Column(name = "user")
+    @JoinColumn(name = "user")
     @ManyToOne(optional = false)
     private User user;
 }
