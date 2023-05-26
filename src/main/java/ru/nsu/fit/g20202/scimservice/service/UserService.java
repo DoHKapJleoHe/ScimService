@@ -54,6 +54,10 @@ public class UserService
         {
             throw new ResourceNotFoundException(id);
         }
+        if(newUser.getId() == null)
+        {
+            newUser.setId(id);
+        }
         if(id != newUser.getId())
         {
             throw new ImmutableAttributeException("id");
