@@ -26,6 +26,10 @@ public class UserMapper
         userDTO.setProfileUrl(user.getProfileUrl());
         userDTO.setUserType(user.getUserType());
 
+        List<String> schemas = new ArrayList<>();
+        schemas.add("urn:ietf:params:scim:schemas:core:2.0:User");
+        userDTO.setSchemas(schemas);
+
         if(user.getName() != null)
         {
             userDTO.setName(NameMapper.toDTO(user.getName()));

@@ -8,6 +8,7 @@ import java.util.List;
 public class UserDTO
 {
     private Integer id;
+    private List<String> schemas;
     private String externalId;
     private MetaDTO meta;
     private boolean active;
