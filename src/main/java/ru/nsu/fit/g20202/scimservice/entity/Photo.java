@@ -1,10 +1,12 @@
 package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Photo
 {
     @Id
@@ -12,9 +14,12 @@ public class Photo
     private Integer id;
 
     @Column(name = "photo_url")
-    private String photoUrl;
+    private String value;
+
+    @Column(name = "type")
+    private String type;
 
     @JoinColumn(name = "user")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
 }

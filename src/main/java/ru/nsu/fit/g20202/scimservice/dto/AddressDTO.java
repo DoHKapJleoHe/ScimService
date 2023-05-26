@@ -2,8 +2,6 @@ package ru.nsu.fit.g20202.scimservice.dto;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class AddressDTO
 {
@@ -15,5 +13,4 @@ public class AddressDTO
     private String country;
     private String type;
     private boolean isPrimary;
-    private List<UserDTO> users;
 }

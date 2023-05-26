@@ -2,6 +2,7 @@ package ru.nsu.fit.g20202.scimservice.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.nsu.fit.g20202.scimservice.entity.Meta;
 import ru.nsu.fit.g20202.scimservice.entity.User;
 import ru.nsu.fit.g20202.scimservice.exceptions.ImmutableAttributeException;
 import ru.nsu.fit.g20202.scimservice.exceptions.ResourceNotFoundException;
@@ -62,6 +63,12 @@ public class UserService
         {
             throw new ImmutableAttributeException("id");
         }
+
+        User oldUser = userRepository.findById(id).get();
+        Meta meta = oldUser.getMeta();
+        meta.setLastModified(String.valueOf(java.time.LocalDateTime.now()));
+        newUser.setMeta(meta);
+
         userRepository.save(newUser);
         return newUser;
     }

@@ -1,10 +1,12 @@
 package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "address")
 public class Address
 {
@@ -21,6 +23,7 @@ public class Address
     private String type;
     private boolean isPrimary;
 
-    @OneToOne
+    @JoinColumn(name = "user")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
 }

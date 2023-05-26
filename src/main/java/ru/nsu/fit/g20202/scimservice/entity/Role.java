@@ -1,12 +1,14 @@
 package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "role")
 public class Role
 {

@@ -3,8 +3,6 @@ package ru.nsu.fit.g20202.scimservice.mappers;
 import ru.nsu.fit.g20202.scimservice.dto.MetaDTO;
 import ru.nsu.fit.g20202.scimservice.entity.Meta;
 
-import java.text.ParseException;
-
 public class MetaMapper
 {
     public static MetaDTO toDTO(Meta meta)
@@ -34,6 +32,8 @@ public class MetaMapper
                 .version(dto.getVersion())
                 .resourceType(dto.getResourceType())
                 .location(dto.getLocation())
+                .created(dto.getCreated())
+                .lastModified(dto.getLastModified())
                 .build();
 
         return meta;

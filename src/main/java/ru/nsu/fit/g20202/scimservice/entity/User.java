@@ -2,15 +2,12 @@ package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -62,16 +59,16 @@ public class User
     @Column(name = "active")
     private Boolean active;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Photo> photos;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Ims> ims;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<PhoneNumber> phoneNumbers;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Email> emails;
 
     @OneToMany
@@ -86,6 +83,6 @@ public class User
     @ManyToMany
     private List<Group> groups;
 
-    @OneToOne
-    private Address address;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Address> addresses;
 }
