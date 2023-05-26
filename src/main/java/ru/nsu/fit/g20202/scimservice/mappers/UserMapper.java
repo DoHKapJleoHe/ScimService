@@ -15,11 +15,13 @@ public class UserMapper
         UserDTO userDTO = new UserDTO();
 
         userDTO.setId(user.getId());
-        userDTO.setExternalId(userDTO.getExternalId());
+        userDTO.setExternalId(user.getExternalId());
         userDTO.setMeta(MetaMapper.toDTO(user.getMeta()));
-        userDTO.setUserName(userDTO.getUserName());
-        userDTO.setName(NameMapper.toDTO(user.getName()));
-        userDTO.setDisplayName(userDTO.getDisplayName());
+        userDTO.setUserName(user.getUserName());
+        if(user.getName() != null) {
+            userDTO.setName(NameMapper.toDTO(user.getName()));
+        }
+        userDTO.setDisplayName(user.getDisplayName());
 
         return userDTO;
     }

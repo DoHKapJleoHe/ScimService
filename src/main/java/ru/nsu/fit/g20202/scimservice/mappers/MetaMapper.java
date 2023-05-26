@@ -12,6 +12,8 @@ public class MetaMapper
         MetaDTO metaDTO = new MetaDTO();
 
         metaDTO.setId(meta.getId());
+        metaDTO.setCreated(meta.getCreated());
+        metaDTO.setLastModified(meta.getLastModified());
         metaDTO.setResourceType(meta.getResourceType());
         metaDTO.setLocation(meta.getLocation());
         metaDTO.setVersion(meta.getVersion());
