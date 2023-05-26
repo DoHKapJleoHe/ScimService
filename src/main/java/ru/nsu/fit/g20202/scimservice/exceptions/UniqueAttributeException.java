@@ -5,7 +5,7 @@ public class UniqueAttributeException extends RuntimeException{
 
     public UniqueAttributeException(String attribute)
     {
-        message = "Attribute " + attribute + "is uniqueness";
+        message = "Attribute " + attribute + " is uniqueness";
     }
 
     public String getMessage()

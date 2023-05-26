@@ -2,10 +2,12 @@ package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Entitlement
 {
     @Id

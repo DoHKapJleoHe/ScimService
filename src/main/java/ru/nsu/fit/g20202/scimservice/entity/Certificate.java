@@ -2,10 +2,12 @@ package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name= "certificate")
 public class Certificate
 {
@@ -14,7 +16,7 @@ public class Certificate
     private Integer id;
 
     @Column(name = "certificate_name")
-    private String certificateName;
+    private String value;
 
     @JoinColumn(name = "user")
     @NotNull

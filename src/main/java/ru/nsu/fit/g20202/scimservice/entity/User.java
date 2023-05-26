@@ -2,15 +2,12 @@ package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.Set;
+import lombok.*;
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,8 +21,7 @@ public class User
     @Column(name = "external_id")
     private String externalId;
 
-    @PrimaryKeyJoinColumn(name = "meta")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Meta meta;
 
     @PrimaryKeyJoinColumn(name = "user_name")
@@ -63,30 +59,30 @@ public class User
     @Column(name = "active")
     private Boolean active;
 
-    @OneToMany
-    private Set<Photo> photoSet;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Photo> photos;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Ims> ims;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<PhoneNumber> phoneNumbers;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Email> emails;
 
     @OneToMany
-    private Set<Ims> imsSet;
-
-    @OneToMany
-    private Set<PhoneNumber> phoneNumberSet;
-
-    @OneToMany
-    private Set<Email> emailSet;
-
-    @OneToMany
-    private Set<Entitlement> entitlementSet;
+    private List<Entitlement> entitlements;
 
     @ManyToMany
-    private Set<Role> roleSet;
+    private List<Role> roles;
 
     @OneToMany
-    private Set<Certificate> certificateSet;
+    private List<Certificate> certificates;
     
     @ManyToMany
-    private Set<Group> groupSet;
+    private List<Group> groups;
 
-    @ManyToOne
-    private Address address;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Address> addresses;
 }

@@ -6,7 +6,7 @@ public class ImmutableAttributeException extends RuntimeException
 
     public ImmutableAttributeException(String attribute)
     {
-        message = "Attribute " + attribute + "is readOnly";
+        message = "Attribute " + attribute + " is readOnly";
     }
 
     public String getMessage()

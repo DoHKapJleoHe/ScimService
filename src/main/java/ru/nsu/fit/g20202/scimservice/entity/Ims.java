@@ -1,10 +1,12 @@
 package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "ims")
 public class Ims
 {
@@ -13,9 +15,12 @@ public class Ims
     private Integer id;
 
     @Column(name = "ims")
-    private String ims; // let it be string because i don't know what ims is))
+    private String value; // let it be string because i don't know what ims is))
+
+    @Column(name = "type")
+    private String type;
 
     @JoinColumn(name = "user")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
 }

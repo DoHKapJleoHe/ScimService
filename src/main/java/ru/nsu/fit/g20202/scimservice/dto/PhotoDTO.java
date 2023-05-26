@@ -5,5 +5,6 @@ import lombok.Data;
 @Data
 public class PhotoDTO
 {
-    private String photoURL;
+    private String value;
+    private String type;
 }

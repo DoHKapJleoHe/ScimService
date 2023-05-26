@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class PhoneNumberDTO
 {
-    private String phoneNumber;
-    private UserDTO user;
+    private String value;
+    private String type;
 }

@@ -2,10 +2,12 @@ package ru.nsu.fit.g20202.scimservice.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.nsu.fit.g20202.scimservice.entity.Meta;
 import ru.nsu.fit.g20202.scimservice.entity.User;
 import ru.nsu.fit.g20202.scimservice.exceptions.ImmutableAttributeException;
 import ru.nsu.fit.g20202.scimservice.exceptions.ResourceNotFoundException;
 import ru.nsu.fit.g20202.scimservice.exceptions.UniqueAttributeException;
+import ru.nsu.fit.g20202.scimservice.repository.MetaRepository;
 import ru.nsu.fit.g20202.scimservice.repository.UserRepository;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 public class UserService
 {
     private final UserRepository userRepository;
+    private final MetaRepository metaRepository;
 
     public User createUser(User user)//Должен вернуть 201 и json с User (или 409 если кинули исключение)
     {
@@ -45,7 +48,9 @@ public class UserService
         {
             throw new ResourceNotFoundException(id);
         }
-        userRepository.deleteById(id);
+        User user = userRepository.findById(id).get();
+        metaRepository.delete(user.getMeta());
+        userRepository.delete(user);
     }
 
     public User replaceUserById(User newUser, int id)//Должен вернуть 200 и json с User (или 404 если UserNotFound и 400 если ImmutableAttribute)
@@ -54,10 +59,20 @@ public class UserService
         {
             throw new ResourceNotFoundException(id);
         }
+        if(newUser.getId() == null)
+        {
+            newUser.setId(id);
+        }
         if(id != newUser.getId())
         {
             throw new ImmutableAttributeException("id");
         }
+
+        User oldUser = userRepository.findById(id).get();
+        Meta meta = oldUser.getMeta();
+        meta.setLastModified(String.valueOf(java.time.LocalDateTime.now()));
+        newUser.setMeta(meta);
+
         userRepository.save(newUser);
         return newUser;
     }

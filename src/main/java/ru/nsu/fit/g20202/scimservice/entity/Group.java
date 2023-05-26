@@ -2,12 +2,14 @@ package ru.nsu.fit.g20202.scimservice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name= "`group`")
 public class Group {
 
@@ -27,5 +29,5 @@ public class Group {
     private String displayName;
 
     @ManyToMany
-    private Set<User> members;
+    private List<User> members;
 }
