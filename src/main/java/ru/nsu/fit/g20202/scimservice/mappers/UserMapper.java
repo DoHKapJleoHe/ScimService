@@ -6,7 +6,6 @@ import ru.nsu.fit.g20202.scimservice.entity.Meta;
 import ru.nsu.fit.g20202.scimservice.entity.Name;
 import ru.nsu.fit.g20202.scimservice.entity.User;
 
-import java.text.ParseException;
 
 @Component
 public class UserMapper
@@ -34,13 +33,29 @@ public class UserMapper
                 .displayName(dto.getDisplayName())
                 .build();
 
-        if (dto.getMeta() != null) {
-            Meta newMeta = MetaMapper.toEntity(dto.getMeta());
-            newMeta.setUser(newUser);
-            newUser.setMeta(newMeta);
+        Meta newMeta;
+
+        if (dto.getMeta() != null)
+        {
+            newMeta = MetaMapper.toEntity(dto.getMeta());
+            newMeta.setLastModified(String.valueOf(java.time.LocalDateTime.now()));
+        }
+        else
+        {
+            String time = String.valueOf(java.time.LocalDateTime.now());
+            newMeta = Meta.builder()
+                    .resourceType("User")
+                    .created(time)
+                    .lastModified(time)
+                    .location("Users/"+dto.getUserName())
+                    .build();
         }
 
-        if (dto.getName() != null) {
+        newMeta.setUser(newUser);
+        newUser.setMeta(newMeta);
+
+        if (dto.getName() != null)
+        {
             Name newName = NameMapper.toEntity(dto.getName());
             newName.setUser(newUser);
             newUser.setName(newName);

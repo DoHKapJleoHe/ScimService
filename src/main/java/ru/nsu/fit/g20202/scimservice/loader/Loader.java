@@ -6,7 +6,7 @@ import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 import org.springframework.stereotype.Component;
 import ru.nsu.fit.g20202.scimservice.dto.UserDTO;
 import ru.nsu.fit.g20202.scimservice.mappers.UserMapper;
-import ru.nsu.fit.g20202.scimservice.repository.UserRepository;
+import ru.nsu.fit.g20202.scimservice.service.UserService;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,13 +17,13 @@ import java.util.Map;
 @Component
 public class Loader
 {
-    private final UserRepository userRepository;
+    private final UserService userService;
     private final UserMapper userMapper;
 
-    public Loader(UserRepository userRepository, UserMapper userMapper)
+    public Loader(UserMapper userMapper, UserService userService)
     {
-        this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.userService = userService;
         this.loadUsers();
     }
 
@@ -48,8 +48,14 @@ public class Loader
 
         CsvToBean<UserDTO> csvToBean = new CsvToBean<>();
         List<UserDTO> list = csvToBean.parse(strategy, csvReader);
-        for(UserDTO userDTO : list){
-            userRepository.save(userMapper.toEntity(userDTO));
+        for(UserDTO userDTO : list)
+        {
+            try {
+                userService.createUser(UserMapper.toEntity(userDTO));
+            } catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }

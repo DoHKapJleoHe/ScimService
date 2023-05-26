@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,8 +24,7 @@ public class User
     @Column(name = "external_id")
     private String externalId;
 
-    @PrimaryKeyJoinColumn(name = "meta")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Meta meta;
 
     @PrimaryKeyJoinColumn(name = "user_name")
@@ -64,29 +63,29 @@ public class User
     private Boolean active;
 
     @OneToMany
-    private Set<Photo> photoSet;
+    private List<Photo> photos;
 
     @OneToMany
-    private Set<Ims> imsSet;
+    private List<Ims> ims;
 
     @OneToMany
-    private Set<PhoneNumber> phoneNumberSet;
+    private List<PhoneNumber> phoneNumbers;
 
     @OneToMany
-    private Set<Email> emailSet;
+    private List<Email> emails;
 
     @OneToMany
-    private Set<Entitlement> entitlementSet;
+    private List<Entitlement> entitlements;
 
     @ManyToMany
-    private Set<Role> roleSet;
+    private List<Role> roles;
 
     @OneToMany
-    private Set<Certificate> certificateSet;
+    private List<Certificate> certificates;
     
     @ManyToMany
-    private Set<Group> groupSet;
+    private List<Group> groups;
 
-    @ManyToOne
+    @OneToOne
     private Address address;
 }

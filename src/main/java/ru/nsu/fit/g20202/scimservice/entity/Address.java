@@ -3,8 +3,6 @@ package ru.nsu.fit.g20202.scimservice.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Entity
 @Data
 @Table(name = "address")
@@ -23,6 +21,6 @@ public class Address
     private String type;
     private boolean isPrimary;
 
-    @OneToMany
-    private List<User> users;
+    @OneToOne
+    private User user;
 }

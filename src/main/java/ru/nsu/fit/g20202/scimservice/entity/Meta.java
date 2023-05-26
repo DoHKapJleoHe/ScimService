@@ -21,9 +21,8 @@ public class Meta
     @GeneratedValue
     private Integer id;
 
-    @PrimaryKeyJoinColumn(name = "user")
     @NotNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     @Column(name = "resource_type")

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -27,5 +27,5 @@ public class Group {
     private String displayName;
 
     @ManyToMany
-    private Set<User> members;
+    private List<User> members;
 }

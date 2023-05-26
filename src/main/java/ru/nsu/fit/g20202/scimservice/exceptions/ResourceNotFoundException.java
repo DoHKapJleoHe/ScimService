@@ -6,7 +6,7 @@ public class ResourceNotFoundException extends RuntimeException
 
         public ResourceNotFoundException(Integer id)
         {
-            message = "Resource " + id + "not found";
+            message = "Resource " + id + " not found";
         }
 
         public String getMessage()
