@@ -19,6 +19,13 @@ public class UserMapper
         userDTO.setExternalId(user.getExternalId());
         userDTO.setMeta(MetaMapper.toDTO(user.getMeta()));
         userDTO.setUserName(user.getUserName());
+        userDTO.setTimeZone(user.getTimeZone());
+        userDTO.setLocale(user.getLocale());
+        userDTO.setPreferredLanguage(user.getPreferredLanguage());
+        userDTO.setNickname(user.getNickname());
+        userDTO.setProfileUrl(user.getProfileUrl());
+        userDTO.setUserType(user.getUserType());
+
         if(user.getName() != null)
         {
             userDTO.setName(NameMapper.toDTO(user.getName()));
@@ -75,6 +82,12 @@ public class UserMapper
                 .active(dto.isActive())
                 .externalId(dto.getExternalId())
                 .displayName(dto.getDisplayName())
+                .timeZone(dto.getTimeZone())
+                .locale(dto.getLocale())
+                .preferredLanguage(dto.getPreferredLanguage())
+                .profileUrl(dto.getProfileUrl())
+                .nickname(dto.getNickname())
+                .userType(dto.getUserType())
                 .build();
 
         String time = String.valueOf(java.time.LocalDateTime.now());

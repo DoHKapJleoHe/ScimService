@@ -14,6 +14,13 @@ public class UserDTO
     private String userName;
     private NameDTO name;
     private String displayName;
+    private String nickname;
+    private String profileUrl;
+    private String title;
+    private String userType;
+    private String preferredLanguage;
+    private String locale;
+    private String timeZone;
     private List<EmailDTO> emails;
     private List<AddressDTO> addresses;
     private List<PhoneNumberDTO> phoneNumbers;
