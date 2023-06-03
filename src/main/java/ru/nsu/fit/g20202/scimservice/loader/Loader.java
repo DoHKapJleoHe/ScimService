@@ -39,7 +39,8 @@ public class Loader
         CSVReader csvReader = null;
         try
         {
-            csvReader = new CSVReader(new FileReader("src/main/resources/users.csv"));
+            // src/main/resources/users.csv
+            csvReader = new CSVReader(new FileReader("/usr/app/users.csv"));
         }
         catch (FileNotFoundException e)
         {
