@@ -43,7 +43,6 @@ public class UserController
     public ResponseEntity<UserDTO> getUserById(@PathVariable Integer id)
     {
         User user = userService.getUserById(id);
-
         return new ResponseEntity<>(UserMapper.toDTO(user), HttpStatus.OK);
     }
 

@@ -17,6 +17,6 @@ public class Entitlement
 
     @JoinColumn(name = "user")
     @NotNull
-    @ManyToOne(optional = false)
+    @ManyToOne()
     private User user;
 }
