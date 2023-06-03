@@ -44,6 +44,7 @@ class ScimServiceApplicationTests {
 
     @Test
     void contextLoads() {
+        assertThat(userRepository).isNotNull();
     }
 
     @Test
