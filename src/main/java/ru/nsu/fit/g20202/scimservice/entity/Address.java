@@ -24,6 +24,6 @@ public class Address
     private boolean isPrimary;
 
     @JoinColumn(name = "user")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 }

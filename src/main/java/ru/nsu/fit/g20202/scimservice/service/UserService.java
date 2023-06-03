@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.nsu.fit.g20202.scimservice.entity.Meta;
 import ru.nsu.fit.g20202.scimservice.entity.User;
 import ru.nsu.fit.g20202.scimservice.exceptions.ImmutableAttributeException;
+import ru.nsu.fit.g20202.scimservice.exceptions.RequiredAttributeException;
 import ru.nsu.fit.g20202.scimservice.exceptions.ResourceNotFoundException;
 import ru.nsu.fit.g20202.scimservice.exceptions.UniqueAttributeException;
-import ru.nsu.fit.g20202.scimservice.repository.MetaRepository;
-import ru.nsu.fit.g20202.scimservice.repository.UserRepository;
+import ru.nsu.fit.g20202.scimservice.repository.*;
 
 import java.util.List;
 
@@ -21,6 +21,9 @@ public class UserService
 
     public User createUser(User user)//Должен вернуть 201 и json с User (или 409 если кинули исключение)
     {
+        if(user.getUserName() == null){
+            throw new RequiredAttributeException("userName");
+        }
         if(userRepository.existsByUserName(user.getUserName())){//Нужно добавить этот метод в репозиторий
             throw new UniqueAttributeException("userName");
         }
